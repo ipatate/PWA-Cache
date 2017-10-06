@@ -1,0 +1,6 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/babel-plugin-flow-react-proptypes/*.
+[include]
+[libs]
+[options]
+module.ignore_non_literal_requires=true
