@@ -4,6 +4,7 @@
   "description": "Exemple app with cache",
   "main": "index.js",
   "scripts": {
+    "build": "npm run webpack -- --config webpack.config.prod.js",
     "dev": "rm -rf dist/ && node index.js",
     "flow": "node_modules/.bin/flow",
     "webpack": "node_modules/.bin/webpack"
@@ -12,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "uglifyjs-webpack-plugin": "^0.4.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
