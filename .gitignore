@@ -13,5 +13,7 @@ projectFilesBackup
 .dist
 .tmp
 
+dist/
+
 # ignore all custom json files for config
 config.*.json
