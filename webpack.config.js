@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -34,5 +35,8 @@ module.exports = {
       template: `${__dirname}/src/index.html`,
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+    }),
   ],
 };
