@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import 'worker-loader?name=service-worker.js!./service-worker.js'; // eslint-disable-line
+import reset from './styles/reset'; // eslint-disable-line
+import theme from './styles/theme';
 
 const App = () => <div>App React</div>;
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>,
+  document.getElementById('app'),
+);
 
 if (module.hot) {
   module.hot.accept();
