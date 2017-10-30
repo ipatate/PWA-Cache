@@ -10,7 +10,9 @@ const config = require('./webpack.config.js');
 
 const DIST_DIR = path.join(__dirname, 'dist');
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
-const DEFAULT_PORT = 4000;
+const DEFAULT_PORT = process.env.POST || 4000;
+
+const isSSL = process.env.SSL || false;
 
 const compiler = webpack(config);
 const app = express();
@@ -35,7 +37,11 @@ app.get('*', (req, res, next) => {
   });
 });
 
-devcert('my-app', { installCertutil: true }).then(ssl => {
-  https.createServer(ssl, app).listen(app.get('port'));
-  console.log(`app listen ${app.get('port')}`); // eslint-disable-line
-});
+if (isSSL === true) {
+  devcert('my-app', { installCertutil: true }).then(ssl => {
+    https.createServer(ssl, app).listen(app.get('port'));
+    console.log(`app listen ${app.get('port')}`); // eslint-disable-line
+  });
+} else {
+  app.listen(app.get('port'));
+}
